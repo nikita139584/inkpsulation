@@ -1,0 +1,23 @@
+__all__ = ["Cat"]
+
+from dataclasses import dataclass
+
+@dataclass
+class Cat:
+    name: str = "Barsyk"
+    __age: int = 2 # зробити поле приватним !!!
+
+    @property
+    def age(self) -> int:
+        return self.__age
+
+    @age.setter
+    def age(self, age) -> None:
+        if type(age) != int:
+            raise TypeError("Cat age value must be an integer type")
+
+        if age <= 0 or age > 39:
+            raise ValueError("Cat age must be between 0 and 39")
+
+        self.__age = age
+ 
